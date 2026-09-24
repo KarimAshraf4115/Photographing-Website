@@ -1,16 +1,10 @@
 import { useRef, useState } from "react";
 import data from "../../../posts.json";
 import ArticleCard from "../Common/ArticleCard/ArticleCard";
-export default function Articles({ filter , setFilter }) {
-  const [currentPage, setCurrentPage] = useState(1);
+export default function Articles({ filter, setFilter , currentPage , setCurrentPage }) {
   const [view, setView] = useState("grid");
   const listTop = useRef(null);
-  let posts = [];
-  if (filter === "all") {
-    posts = data.posts;
-  } else {
-    posts = data.posts.filter((post) => post.category === filter);
-  }
+  const posts = filter === "all" ? data.posts : data.posts.filter((post) => post.category === filter);
   const postsPerPage = 6;
   const startIndex = (currentPage - 1) * postsPerPage;
   const currentPosts = posts.slice(startIndex, startIndex + postsPerPage);
@@ -20,19 +14,32 @@ export default function Articles({ filter , setFilter }) {
     listTop.current.scrollIntoView({ behavior: "smooth" });
   }
 
+  function filterHelper(filter) {
+    setFilter(filter);
+    setCurrentPage(1);
+  }
+
   return (
     <>
       <div
         ref={listTop}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 scroll-mt-[146px]"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 scroll-mt-36.5"
       >
         <div className="mb-8 flex items-center justify-between">
           <p className="text-neutral-400">
-            عرض <span className="font-bold text-white">{posts.length}</span> مقالات
+            عرض <span className="font-bold text-white">{posts.length}</span>{" "}
+            مقالات
             <span>
               {" "}
-              {filter !== "all" ?   <span className="font-bold text-orange-500 capitalize"> <span className="text-neutral-400 font-normal">في</span> {filter}</span> : " "}
-             
+              {filter !== "all" ? (
+                <span className="font-bold text-orange-500 capitalize">
+                  {" "}
+                  <span className="text-neutral-400 font-normal">في</span>{" "}
+                  {filter}
+                </span>
+              ) : (
+                " "
+              )}
             </span>
           </p>
           <div className="flex items-center gap-2">
@@ -79,7 +86,10 @@ export default function Articles({ filter , setFilter }) {
             </div>
 
             {filter !== "all" ? (
-              <button onClick={() => setFilter("all")} className="text-sm text-neutral-500 hover:text-orange-500 flex items-center gap-1 transition-colors">
+              <button
+                onClick={() => filterHelper("all")}
+                className="text-sm text-neutral-500 hover:text-orange-500 flex items-center gap-1 transition-colors"
+              >
                 <svg
                   className="w-4 h-4"
                   fill="none"

@@ -1,6 +1,12 @@
 import data from "../../../posts.json";
-export default function Head({filter , setFilter}) {
+export default function Head({ filter, setFilter, setCurrentPage }) {
   const categories = data.categories;
+
+  function filterHelper(filter) {
+    setFilter(filter);
+    setCurrentPage(1);
+  }
+
   return (
     <>
       <div className="relative py-20 overflow-hidden">
@@ -61,12 +67,18 @@ export default function Head({filter , setFilter}) {
               </svg>
             </div>
             <div className="flex flex-wrap justify-center gap-2">
-              <button onClick={() => setFilter("all")} className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${filter==="all" ? "bg-linear-to-r from-orange-500 to-orange-600 text-white" : "bg-[#161616] text-neutral-400 border border-[#262626] hover:border-orange-500/30"}`}>
+              <button
+                onClick={() => setFilter("all")}
+                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${filter === "all" ? "bg-linear-to-r from-orange-500 to-orange-600 text-white" : "bg-[#161616] text-neutral-400 border border-[#262626] hover:border-orange-500/30"}`}
+              >
                 جميع المقالات
               </button>
 
               {categories.map((category) => (
-                <button onClick={() => setFilter(category.name)} className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${filter === category.name ?"bg-linear-to-r from-orange-500 to-orange-600 text-white": "bg-[#161616] text-neutral-400 border border-[#262626] hover:border-orange-500/30"}`}>
+                <button
+                  onClick={() => filterHelper(category.name)}
+                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${filter === category.name ? "bg-linear-to-r from-orange-500 to-orange-600 text-white" : "bg-[#161616] text-neutral-400 border border-[#262626] hover:border-orange-500/30"}`}
+                >
                   {category.name}
                 </button>
               ))}
