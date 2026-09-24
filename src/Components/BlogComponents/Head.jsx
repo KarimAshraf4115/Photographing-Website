@@ -1,4 +1,6 @@
-export default function Head() {
+import data from "../../../posts.json";
+export default function Head({filter , setFilter}) {
+  const categories = data.categories;
   return (
     <>
       <div className="relative py-20 overflow-hidden">
@@ -59,24 +61,15 @@ export default function Head() {
               </svg>
             </div>
             <div className="flex flex-wrap justify-center gap-2">
-              <button className="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 bg-linear-to-r from-orange-500 to-orange-600 text-white">
+              <button onClick={() => setFilter("all")} className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${filter==="all" ? "bg-linear-to-r from-orange-500 to-orange-600 text-white" : "bg-[#161616] text-neutral-400 border border-[#262626] hover:border-orange-500/30"}`}>
                 جميع المقالات
               </button>
-              <button className="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 bg-[#161616] text-neutral-400 border border-[#262626] hover:border-orange-500/30">
-                إضاءة
-              </button>
-              <button className="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 bg-[#161616] text-neutral-400 border border-[#262626] hover:border-orange-500/30">
-                بورتريه
-              </button>
-              <button className="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 bg-[#161616] text-neutral-400 border border-[#262626] hover:border-orange-500/30">
-                مناظر طبيعية
-              </button>
-              <button className="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 bg-[#161616] text-neutral-400 border border-[#262626] hover:border-orange-500/30">
-                تقنيات
-              </button>
-              <button className="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 bg-[#161616] text-neutral-400 border border-[#262626] hover:border-orange-500/30">
-                معدات
-              </button>
+
+              {categories.map((category) => (
+                <button onClick={() => setFilter(category.name)} className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${filter === category.name ?"bg-linear-to-r from-orange-500 to-orange-600 text-white": "bg-[#161616] text-neutral-400 border border-[#262626] hover:border-orange-500/30"}`}>
+                  {category.name}
+                </button>
+              ))}
             </div>
           </div>
         </div>
