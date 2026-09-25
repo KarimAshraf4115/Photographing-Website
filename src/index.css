@@ -1,7 +1,28 @@
 @import "tailwindcss";
 
+:root {
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+
 body {
     font-family: Tajawal, system-ui, -apple-system, sans-serif;
+}
+
+::selection {
+    background-color: #f97316;
 }
 
 .btn-primary {
@@ -134,7 +155,7 @@ body {
     outline-style: none;
     transition-duration: .3s;
     color: var(--color-white);
-    border-radius : var(--radius-xl)
+    border-radius: var(--radius-xl)
 }
 
 .input-dark:focus {
