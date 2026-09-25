@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { formatDate } from "../../helpers/Helpers";
 export default function ArticleCardHome({ data }) {
   return (
@@ -6,9 +7,9 @@ export default function ArticleCardHome({ data }) {
         className="group relative bg-[#161616] rounded-3xl overflow-hidden border border-[#262626] hover:border-orange-500/30 transition-all duration-500"
         style={{ animationDelay: "0ms" }}
       >
-        <a
+        <Link
           className="block"
-          href="/blog/mastering-golden-hour-photography"
+          to={`/blog/${data.slug}`}
           data-discover="true"
         >
           <div className="grid md:grid-cols-2 gap-0">
@@ -98,7 +99,7 @@ export default function ArticleCardHome({ data }) {
               </div>
             </div>
           </div>
-        </a>
+        </Link>
       </article>
     </>
   );

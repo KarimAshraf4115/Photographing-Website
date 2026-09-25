@@ -39,7 +39,7 @@ export default function Navbar() {
                 <NavLink
                   key={link.to}
                   to={link.to}
-                  end
+                  end={link.end}
                   className={({isActive}) => `${base} ${isActive? active : inActive}`}
                 >
                   {link.label}

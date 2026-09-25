@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return (
     <>
@@ -98,9 +100,9 @@ export default function Footer() {
               </h3>
               <ul className="space-y-4">
                 <li>
-                  <a
+                  <Link
                     className="text-sm text-neutral-500 hover:text-orange-500 transition-colors duration-300 flex items-center gap-2 group"
-                    href="/"
+                    to="/"
                     data-discover="true"
                   >
                     <svg
@@ -117,12 +119,12 @@ export default function Footer() {
                       />
                     </svg>
                     الرئيسية
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     className="text-sm text-neutral-500 hover:text-orange-500 transition-colors duration-300 flex items-center gap-2 group"
-                    href="/blog"
+                    to="/blog"
                     data-discover="true"
                   >
                     <svg
@@ -139,12 +141,12 @@ export default function Footer() {
                       />
                     </svg>
                     المدونة
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     className="text-sm text-neutral-500 hover:text-orange-500 transition-colors duration-300 flex items-center gap-2 group"
-                    href="/about"
+                    to="/about"
                     data-discover="true"
                   >
                     <svg
@@ -161,7 +163,7 @@ export default function Footer() {
                       />
                     </svg>
                     من نحن
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -172,9 +174,9 @@ export default function Footer() {
               </h3>
               <ul className="space-y-4">
                 <li>
-                  <a
+                  <Link
                     className="text-sm text-neutral-500 hover:text-orange-500 transition-colors duration-300 flex items-center gap-2 group"
-                    href="/blog?category=إضاءة"
+                    to="/blog?category=إضاءة"
                     data-discover="true"
                   >
                     <svg
@@ -191,12 +193,12 @@ export default function Footer() {
                       />
                     </svg>
                     إضاءة
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     className="text-sm text-neutral-500 hover:text-orange-500 transition-colors duration-300 flex items-center gap-2 group"
-                    href="/blog?category=بورتريه"
+                    to="/blog?category=بورتريه"
                     data-discover="true"
                   >
                     <svg
@@ -213,12 +215,12 @@ export default function Footer() {
                       />
                     </svg>
                     بورتريه
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     className="text-sm text-neutral-500 hover:text-orange-500 transition-colors duration-300 flex items-center gap-2 group"
-                    href="/blog?category=مناظر طبيعية"
+                    to="/blog?category=مناظر طبيعية"
                     data-discover="true"
                   >
                     <svg
@@ -235,12 +237,12 @@ export default function Footer() {
                       />
                     </svg>
                     مناظر طبيعية
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     className="text-sm text-neutral-500 hover:text-orange-500 transition-colors duration-300 flex items-center gap-2 group"
-                    href="/blog?category=تقنيات"
+                    to="/blog?category=تقنيات"
                     data-discover="true"
                   >
                     <svg
@@ -257,7 +259,7 @@ export default function Footer() {
                       />
                     </svg>
                     تقنيات
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
