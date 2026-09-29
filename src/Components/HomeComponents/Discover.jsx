@@ -3,6 +3,7 @@ import data from "../../../posts.json";
 import { FaMountainSun } from "react-icons/fa6";
 import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
 import { CiSettings } from "react-icons/ci";
+import { Link } from "react-router-dom";
 export default function Discover() {
   const categories = data.categories;
   const categoriesIcons = [
@@ -56,9 +57,9 @@ export default function Discover() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {categories.map((category) => (
-              <a
+              <Link
                 className="group relative block p-6 rounded-2xl bg-[#161616] border border-[#262626] overflow-hidden hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-1"
-                href="/blog?category=إضاءة"
+                to={`/blog?category=${category.name}`}
                 data-discover="true"
                 style={{ animationDelay: "0ms" }}
               >
@@ -92,7 +93,7 @@ export default function Discover() {
                     </svg>
                   </div>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
