@@ -1,5 +1,11 @@
 import data from "../../../posts.json";
-export default function Head({ filter, setFilter, setCurrentPage }) {
+export default function Head({
+  filter,
+  setFilter,
+  setCurrentPage,
+  setSearch,
+  search,
+}) {
   const categories = data.categories;
 
   function filterHelper(filter) {
@@ -50,7 +56,11 @@ export default function Head({ filter, setFilter, setCurrentPage }) {
                 placeholder="ابحث في المقالات..."
                 className="input-dark w-full px-5 py-3 pr-12"
                 type="text"
-                defaultValue=""
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                  setCurrentPage(1)
+                }}
               />
               <svg
                 className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-500"

@@ -7,7 +7,7 @@ export default function Blog() {
   const categoryFromUrl = searchParam.get("category");
   const [filter, setFilter] = useState(categoryFromUrl || "all");
   const [currentPage, setCurrentPage] = useState(1);
-
+  const [search , setSearch] = useState('')
   useEffect(() => {
     if (categoryFromUrl) {
       setFilter(categoryFromUrl);
@@ -23,12 +23,16 @@ export default function Blog() {
           setFilter={setFilter}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
+          setSearch = {setSearch}
+          search = {search}
         />
         <Articles
           filter={filter}
           setFilter={setFilter}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
+          setSearch = {setSearch}
+          search = {search}
         />
       </div>
     </>
